@@ -4,7 +4,7 @@ import openai
 import base64
 
 #openai.api_key = os.environ.get("OPENAI_API_KEY")
-openai.api_key = "sk-uHSqxVfws0tsA8nYuPsGh4Cg2vpGwl4Jv8u3eAQ4"
+openai.api_key = "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"
 
 
 def gpt3(prompt, engine='davinci', response_length=64,
