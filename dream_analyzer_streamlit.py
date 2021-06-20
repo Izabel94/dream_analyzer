@@ -1,9 +1,9 @@
 import streamlit as st
 import os
 import openai
+import base64
 
 #openai.api_key = os.environ["OPENAI_API_KEY"]
-
 
 
 def gpt3(prompt, engine='davinci', response_length=64,
@@ -47,6 +47,19 @@ AI: Unless you’ve got a deep unconscious desire to pursue ornithology, you lik
                   stop_seq=['\nHuman:', '\n'])
     return answer
 
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("https://cdn.pixabay.com/photo/2019/11/06/14/33/moon-4606246_1280.jpg")
+    }
+   .sidebar .sidebar-content {
+        background: url("https://cdn.pixabay.com/photo/2019/11/06/14/33/moon-4606246_1280.jpg")
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.sidebar.title('Squatting Slavs')
 st.sidebar.text("present:")
