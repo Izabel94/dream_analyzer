@@ -8,7 +8,7 @@ client = openai.OpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
 
-def gpt3(prompt, engine='gemini-2.0-flash', response_length=64,
+def gpt3(prompt, engine='gemini-2.5-flash-lite', response_length=64,
          temperature=0.7, top_p=1, frequency_penalty=0, presence_penalty=0,
          start_text='', restart_text='', stop_seq=[]):
     response = client.chat.completions.create(
@@ -18,6 +18,7 @@ def gpt3(prompt, engine='gemini-2.0-flash', response_length=64,
         temperature=temperature,
         top_p=top_p,
         stop=stop_seq,
+        reasoning_effort='none',
     )
     answer = response.choices[0].message.content
     return answer
