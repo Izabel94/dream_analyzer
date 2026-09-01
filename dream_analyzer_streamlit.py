@@ -3,14 +3,17 @@ import os
 import openai
 import base64
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+client = openai.OpenAI(
+    api_key=os.environ["GEMINI_API_KEY"],
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+)
 
-def gpt3(prompt, engine='davinci', response_length=64,
+def gpt3(prompt, engine='gemini-2.5-flash', response_length=64,
          temperature=0.7, top_p=1, frequency_penalty=0, presence_penalty=0,
          start_text='', restart_text='', stop_seq=[]):
-    response = openai.Completion.create(
-        prompt=prompt + start_text,
-        engine=engine,
+    response = client.chat.completions.create(
+        model=engine,
+        messages=[{"role": "user", "content": prompt + start_text}],
         max_tokens=response_length,
         temperature=temperature,
         top_p=top_p,
@@ -18,7 +21,7 @@ def gpt3(prompt, engine='davinci', response_length=64,
         presence_penalty=presence_penalty,
         stop=stop_seq,
     )
-    answer = response.choices[0]['text']
+    answer = response.choices[0].message.content
     return answer
 
 
