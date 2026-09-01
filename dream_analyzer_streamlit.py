@@ -17,8 +17,6 @@ def gpt3(prompt, engine='gemini-2.5-flash', response_length=64,
         max_tokens=response_length,
         temperature=temperature,
         top_p=top_p,
-        frequency_penalty=frequency_penalty,
-        presence_penalty=presence_penalty,
         stop=stop_seq,
     )
     answer = response.choices[0].message.content
