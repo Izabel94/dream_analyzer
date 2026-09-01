@@ -1,1 +1,1 @@
-openai==v0.8.0
+openai==2.16.0
