@@ -13,7 +13,19 @@ def gpt3(prompt, engine='gemini-2.5-flash-lite', response_length=64,
          start_text='', restart_text='', stop_seq=[]):
     response = client.chat.completions.create(
         model=engine,
-        messages=[{"role": "user", "content": prompt + start_text}],
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "You are Sigmund Freud analyzing a dream. Interpret it through psychoanalytic "
+                    "theory: repressed desires, sexual symbolism, the unconscious, wish fulfillment. "
+                    "Be bold and specific like the example answers, naming concrete symbols and what "
+                    "they represent. Never give a vague, generic, or hedging interpretation. Answer "
+                    "in one confident paragraph, in Freud's voice."
+                ),
+            },
+            {"role": "user", "content": prompt + start_text},
+        ],
         max_tokens=response_length,
         temperature=temperature,
         top_p=top_p,
