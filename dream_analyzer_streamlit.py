@@ -40,7 +40,7 @@ AI: Unless you’ve got a deep unconscious desire to pursue ornithology, you lik
     prompt += description
     answer = gpt3(prompt,
                   response_length=400,
-                  temperature=0.7,
+                  temperature=0,
                   start_text='\nAI:',
                   restart_text='\nHuman: ',
                   stop_seq=['\nHuman:'])
