@@ -39,12 +39,11 @@ Human: Every time I get really sick, with something typically involving a fever,
 AI: Unless you’ve got a deep unconscious desire to pursue ornithology, you likely associate plucked plumes with down comforters, pillows or puffy winter jackets. In that sense, they might suggest feelings of warmth, coziness, ease and relaxation. But when you say “life-size,” do you mean “human-size?” If so, the feathers might appear in your dreamscape as substitutions for people. As for the mattress, it could represent your support system. Its rock-hard surface might indicate a feeling or suspicion that your safety net is not as reassuring as you would like. """
     prompt += description
     answer = gpt3(prompt,
+                  response_length=400,
                   temperature=0.7,
-                  frequency_penalty=0,
-                  presence_penalty=0,
                   start_text='\nAI:',
                   restart_text='\nHuman: ',
-                  stop_seq=['\nHuman:', '\n'])
+                  stop_seq=['\nHuman:'])
     return answer
 
 st.markdown(
